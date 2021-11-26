@@ -32,39 +32,37 @@ int main() {
   game.reset();
   display_tiles();
 
-  [&]() {
-    while (true) {
-      auto dir = cpp2048::MoveDirection::NONE;
-      swiWaitForVBlank();
-      scanKeys();
+  while (true) {
+    auto dir = cpp2048::MoveDirection::NONE;
+    swiWaitForVBlank();
+    scanKeys();
 
-      switch (keysDown()) {
-        case KEY_UP:
-          dir = cpp2048::MoveDirection::UP;
-          break;
-        case KEY_DOWN:
-          dir = cpp2048::MoveDirection::DOWN;
-          break;
-        case KEY_LEFT:
-          dir = cpp2048::MoveDirection::LEFT;
-          break;
-        case KEY_RIGHT:
-          dir = cpp2048::MoveDirection::RIGHT;
-          break;
-        case KEY_START:
-          game.reset();
-          consoleClear();
-          display_tiles();
-          break;
-      }
-
-      auto [y, x] = game.operate(dir);
-      if (y != -1) {
+    switch (keysDown()) {
+      case KEY_UP:
+        dir = cpp2048::MoveDirection::UP;
+        break;
+      case KEY_DOWN:
+        dir = cpp2048::MoveDirection::DOWN;
+        break;
+      case KEY_LEFT:
+        dir = cpp2048::MoveDirection::LEFT;
+        break;
+      case KEY_RIGHT:
+        dir = cpp2048::MoveDirection::RIGHT;
+        break;
+      case KEY_START:
+        game.reset();
         consoleClear();
-        display_tiles(y, x);
-      }
+        display_tiles();
+        break;
     }
-  }();
+
+    auto [y, x] = game.operate(dir);
+    if (y != -1) {
+      consoleClear();
+      display_tiles(y, x);
+    }
+  }
 
   return 0;
 }
