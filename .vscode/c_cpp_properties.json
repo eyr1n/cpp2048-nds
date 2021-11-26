@@ -1,0 +1,21 @@
+{
+  "configurations": [
+    {
+      "name": "devkitARM",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "/opt/devkitpro/libnds/include"
+      ],
+      "forcedInclude": [
+        "${workspaceFolder}/.vscode/iprintf.h"
+      ],
+      "defines": [
+        "ARM9"
+      ],
+      "cStandard": "c17",
+      "cppStandard": "c++20",
+      "compilerPath": "/opt/devkitpro/devkitARM/bin/arm-none-eabi-gcc"
+    }
+  ],
+  "version": 4
+}
