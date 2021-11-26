@@ -1,3 +1,5 @@
 /build/
 /cpp2048-nds.nds
 /cpp2048-nds.elf
+
+.DS_Store
