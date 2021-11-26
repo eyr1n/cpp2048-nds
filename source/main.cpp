@@ -16,10 +16,12 @@ int main() {
     for (int i = 0; i < 4; i++) {
       iprintf(" |      |      |      |      |\n ");
       for (int j = 0; j < 4; j++) {
+        int num = game.get_tile(i, j);
+        int color = 31 + (num > 4) + (num > 16) + (num > 64) * 2 + (num > 256);
         if (i == y && j == x) {
-          iprintf("|[%4d]", game.get_tile(i, j));
+          iprintf("|\e[%dm[%4d]\e[39m", color, num);
         } else if (game.get_tile(i, j)) {
-          iprintf("| %4d ", game.get_tile(i, j));
+          iprintf("|\e[%dm %4d \e[39m", color, num);
         } else {
           iprintf("|      ");
         }
